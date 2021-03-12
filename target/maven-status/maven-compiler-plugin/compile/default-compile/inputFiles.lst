@@ -1,9 +1,7 @@
 C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\FriendSystem.java
-C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\commands\MessageCommand.java
-C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\commands\ReplyCommand.java
+C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\objects\TextComponentBuilder.java
 C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\database\MongoPlayer.java
 C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\commands\FriendCommand.java
-C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\manager\ConversationManager.java
 C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\database\MongoManager.java
 C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\manager\FriendManager.java
 C:\Users\Finn\Documents\NetBeansProjects\FriendSystem\src\main\java\de\finn\friendsystem\enums\FriendEnum.java

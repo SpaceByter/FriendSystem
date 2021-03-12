@@ -16,7 +16,7 @@ public enum FriendEnum {
     SKIN,
     FRIEND_LIST,
     REQUEST_LIST,
-    BLOCK_LIST,
+    FAVORITES,
     ALLOW_PARTY,
     ALLOW_MESSAGE,
     ALLOW_FRIEND,

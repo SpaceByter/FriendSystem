@@ -22,10 +22,10 @@ public class FriendCommand extends Command {
     
     public void execute(CommandSender sender, String[] args) {
         if(!(sender instanceof ProxiedPlayer)) return;
-        
         ProxiedPlayer player = (ProxiedPlayer)sender;
+        
         if(args.length == 2) {
-            switch(args[0]) {
+            switch(args[0].toLowerCase()) {
                 case "add":
                     plugin.getFriendManager().sendFriendRequest(player, args[1]);
                     break;
@@ -35,6 +35,12 @@ public class FriendCommand extends Command {
                 case "deny":
                     plugin.getFriendManager().denyFriendRequest(player, args[1]);
                     break;
+                case "favremove":
+                    plugin.getFriendManager().removeFavorite(player, args[1]);
+                    break;
+                case "favadd":
+                    plugin.getFriendManager().setFavorite(player, args[1]);
+                    break;
                 case "accept":
                     plugin.getFriendManager().acceptFriendRequest(player, args[1]);
                     break;
@@ -42,24 +48,20 @@ public class FriendCommand extends Command {
                     plugin.getFriendManager().jumpToFriend(player, args[1]);
                     break;
                 case "toggle":
-                    if(args[1].equalsIgnoreCase("request")) {
-                        plugin.getFriendManager().toggleSettings(player, SettingsEnum.REQUEST);
-                        break;
+                    switch(args[1].toLowerCase()) {
+                        case "request":
+                            plugin.getFriendManager().toggleSettings(player, SettingsEnum.REQUEST);
+                            break;
+                        case "notify":
+                            plugin.getFriendManager().toggleSettings(player, SettingsEnum.MESSAGE);
+                            break;
+                        case "party":
+                            plugin.getFriendManager().toggleSettings(player, SettingsEnum.PARTY);
+                            break;
+                        case "jump":
+                            plugin.getFriendManager().toggleSettings(player, SettingsEnum.JUMP);
+                            break;
                     }
-                    if(args[1].equalsIgnoreCase("notify")) {
-                        plugin.getFriendManager().toggleSettings(player, SettingsEnum.MESSAGE);
-                        break;
-                    }
-                    if(args[1].equalsIgnoreCase("party")) {
-                        plugin.getFriendManager().toggleSettings(player, SettingsEnum.PARTY);
-                        break;
-                    }
-                    if(args[1].equalsIgnoreCase("jump")) {
-                        plugin.getFriendManager().toggleSettings(player, SettingsEnum.JUMP);
-                        break;
-                    }
-                    break;
-                    
             }
             return;
         }
@@ -73,6 +75,15 @@ public class FriendCommand extends Command {
             return;
         }
         
+        sendCommandLog(player);
+    }
+    
+    /**
+     * @param player is the sender of the command
+     */
+    
+    //<editor-fold defaultstate="collapsed" desc="commandLog">
+    void sendCommandLog(ProxiedPlayer player) {
         player.sendMessage(this.plugin.getPREFIX() + "§7Command Übersicht:");
         player.sendMessage(" ");
         player.sendMessage("§b/friend add §7<§3Spieler§7> | Schicke jemandem eine §3Einladung§7.");
@@ -80,5 +91,8 @@ public class FriendCommand extends Command {
         player.sendMessage("§b/friend accept §7<§3Spieler§7> | Lehne eine §3Einladung §7ab.");
         player.sendMessage("§b/friend remove §7<§3Spieler§7> | Entferne jemanden aus deiner §3Freundesliste§7.");
     }
+    //</editor-fold>
     
 }
+
+

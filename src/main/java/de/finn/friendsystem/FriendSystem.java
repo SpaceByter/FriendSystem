@@ -6,11 +6,8 @@
 package de.finn.friendsystem;
 
 import de.finn.friendsystem.commands.FriendCommand;
-import de.finn.friendsystem.commands.MessageCommand;
-import de.finn.friendsystem.commands.ReplyCommand;
 import de.finn.friendsystem.database.MongoManager;
 import de.finn.friendsystem.listener.PlayerConnect;
-import de.finn.friendsystem.manager.ConversationManager;
 import de.finn.friendsystem.manager.FriendManager;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -24,17 +21,13 @@ public class FriendSystem extends Plugin {
     private final String PREFIX = "§7✦ §3Freunde §8» ";
     private MongoManager mongoManager;
     private FriendManager friendManager;
-    private ConversationManager conversationManager;
     
     @Override
     public void onEnable() {
-        this.init();
-        this.friendManager = new FriendManager(this);
-        conversationManager = new ConversationManager(this);
+        init();
+        
         new FriendCommand(this);
         new PlayerConnect(this);
-        new MessageCommand(this);
-        new ReplyCommand(this);
     }
 
     @Override
@@ -46,6 +39,8 @@ public class FriendSystem extends Plugin {
     private void init() {
         this.mongoManager = new MongoManager("localhost", 27017);
         this.mongoManager.connect();
+        
+        this.friendManager = new FriendManager(this);
     }
     //</editor-fold>
 
@@ -61,12 +56,10 @@ public class FriendSystem extends Plugin {
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="getFriendManager">
     public FriendManager getFriendManager() {
         return friendManager;
     }
-
-    public ConversationManager getConversationManager() {
-        return conversationManager;
-    }
+    //</editor-fold>
     
 }

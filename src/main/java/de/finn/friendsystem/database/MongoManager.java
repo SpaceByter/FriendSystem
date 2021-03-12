@@ -26,23 +26,33 @@ public class MongoManager {
     
     private MongoCollection<Document> players;
     
+    /**
+     * @param hostname is the hostname of the database
+     * @param port is the port of the database
+     */
     public MongoManager(String hostname, int port) {
         this.hostname = hostname;
         this.port = port;
     }
     
+    //<editor-fold defaultstate="collapsed" desc="connect">
     public void connect(){
         this.client = MongoClients.create(new ConnectionString("mongodb://" + this.hostname + ":" + this.port));
         this.database = this.client.getDatabase("FriendSystem");
         this.players = this.database.getCollection("players");
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="disconnectDatabase">
     public void disconnectDatabase(){
         if(this.client != null) this.client.close();
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="getPlayers">
     public MongoCollection<Document> getPlayers() {
         return players;
     }
+    //</editor-fold>
     
 }

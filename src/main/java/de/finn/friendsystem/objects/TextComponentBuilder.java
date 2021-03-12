@@ -25,16 +25,31 @@ public class TextComponentBuilder {
         this.text = text;
     }
     
+    /**
+     * @param hover is the text that is displayed when you hover over the message
+     * @return this class
+     */
+    //<editor-fold defaultstate="collapsed" desc="addHover">
     public TextComponentBuilder addHover(String hover) {
         this.hover = hover;
         return this;
     }
+    //</editor-fold>
     
+    /**
+     * @param clickEventAction is the action that is performed when you click on the text
+     * @param value is the string for the action
+     * @return this class
+     */
+    //<editor-fold defaultstate="collapsed" desc="addClickEvent">
     public TextComponentBuilder addClickEvent(ClickEvent.Action clickEventAction, String value) {
         this.action = clickEventAction;
         this.click = value;
         return this;
     }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="build">
     public TextComponent build() {
         TextComponent textComponent = new TextComponent();
         textComponent.setText(this.text);
@@ -46,6 +61,8 @@ public class TextComponentBuilder {
         }
         return textComponent;
     }
+    //</editor-fold>
+    
     public enum ClickEventType {
         RUN_COMMAND, SUGGEST_COMMAND, OPEN_URL
     }
